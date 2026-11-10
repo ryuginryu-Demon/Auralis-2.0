@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101012">
+  <meta name="description" content="Auralis — your music, in motion.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>Auralis — Music for every mood</title>
+  <link rel="preconnect" href="https://www.soundhelix.com">
+  <style>
+    :root{--bg:#0c0c0f;--panel:#15151a;--panel2:#1d1d23;--text:#f6f5f7;--muted:#a5a3ad;--lime:#c8f36a;--purple:#a78bfa;--line:#2b2a32}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    button,input{font:inherit}button{cursor:pointer} .app{max-width:1280px;margin:auto;min-height:100vh;padding:22px 24px 120px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}.brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.7px;font-size:23px}.logo{width:34px;height:34px;border-radius:11px;background:var(--lime);display:grid;place-items:center;color:#111;font-size:20px;font-weight:900}
+    .top-right{display:flex;gap:10px;align-items:center}.pill{border:1px solid var(--line);border-radius:99px;padding:9px 14px;color:var(--muted);background:transparent}.pill.active{color:var(--lime);border-color:#52652c}
+    .layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:28px}.side{position:sticky;top:20px;height:max-content}.nav{display:grid;gap:7px}.nav button{border:0;text-align:left;padding:13px 14px;border-radius:12px;color:var(--muted);background:transparent;font-weight:650}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--text)}.nav .ico{display:inline-block;width:26px;color:var(--lime)}
+    .side-label{font-size:11px;letter-spacing:1.5px;color:#777580;font-weight:800;margin:28px 14px 10px}.side-note{font-size:12px;color:#777580;padding:14px;line-height:1.6}
+    .hero{position:relative;overflow:hidden;border-radius:24px;padding:30px;min-height:220px;background:radial-gradient(circle at 82% 22%,#8a62e8 0,transparent 30%),linear-gradient(115deg,#27371e,#171b22 58%,#38265a);display:flex;align-items:end;margin-bottom:28px}
+    .hero:after{content:"♫";position:absolute;right:11%;top:-48px;font-size:250px;line-height:1;color:#ffffff12;transform:rotate(12deg)}
+    .hero-copy{position:relative;z-index:1;max-width:480px}.eyebrow{color:var(--lime);font-size:11px;font-weight:850;letter-spacing:1.7px;text-transform:uppercase}.hero h1{font-size:clamp(30px,5vw,48px);letter-spacing:-2px;line-height:1.02;margin:10px 0}.hero p{color:#d3d0db;margin:0 0 18px}.primary{background:var(--lime);color:#171a0e;border:0;border-radius:99px;padding:11px 19px;font-weight:850}.primary:hover{filter:brightness(1.06)}
+    .section-head{display:flex;justify-content:space-between;align-items:center;margin:26px 0 14px}.section-head h2{font-size:21px;letter-spacing:-.6px;margin:0}.subtle{color:var(--muted);font-size:13px}
+    .quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.quick{display:flex;align-items:center;gap:12px;background:var(--panel);border-radius:12px;overflow:hidden;min-width:0}.quick .art{width:62px;height:62px;flex:none}.quick span{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.quick button{margin-left:auto;margin-right:12px;background:none;border:0;color:var(--lime);font-size:21px}
+    .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}.card{background:var(--panel);border-radius:16px;padding:12px;min-width:0;transition:.18s}.card:hover{background:#202027;transform:translateY(-2px)}.art{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;font-size:42px;color:#ffffffd9;position:relative;overflow:hidden}.art:before{content:"";position:absolute;width:130%;height:60%;border:1px solid #ffffff35;border-radius:50%;transform:rotate(-35deg)}.art b{z-index:1;text-shadow:0 3px 18px #0006}.a1{background:linear-gradient(135deg,#b7d66b,#36523c)}.a2{background:linear-gradient(135deg,#ee9d70,#733d76)}.a3{background:linear-gradient(135deg,#6ab7bd,#253c73)}.a4{background:linear-gradient(135deg,#c6a1ed,#473b75)}.a5{background:linear-gradient(135deg,#e9c36a,#a44f43)}.a6{background:linear-gradient(135deg,#6c7fdb,#22264e)}.card h3{font-size:14px;margin:11px 0 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card p{margin:0;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .searchbar{display:flex;align-items:center;gap:10px;background:var(--panel2);padding:13px 16px;border-radius:99px;margin:12px 0 20px}.searchbar input{border:0;outline:0;background:transparent;color:var(--text);width:100%}.track-list{display:grid;gap:4px}.track{display:grid;grid-template-columns:42px minmax(0,1fr) 90px 42px;gap:12px;align-items:center;padding:8px;border-radius:10px}.track:hover,.track.playing{background:var(--panel2)}.track .miniart{width:42px;height:42px;border-radius:8px;display:grid;place-items:center}.track-title{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.track-artist,.duration{font-size:12px;color:var(--muted)}.track .play-small{border:0;background:none;color:var(--lime);font-size:18px}.heart{border:0;background:none;color:#8e8b97;font-size:18px}.heart.liked{color:#ff7caa}
+    .empty{padding:44px 20px;text-align:center;color:var(--muted);background:var(--panel);border-radius:16px}.empty strong{display:block;color:var(--text);font-size:18px;margin-bottom:6px}
+    .player{position:fixed;z-index:5;bottom:0;left:0;right:0;background:#17171deF;border-top:1px solid var(--line);backdrop-filter:blur(18px);padding:12px 24px calc(12px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1.3fr 1fr;align-items:center;gap:18px}.now{display:flex;align-items:center;gap:11px;min-width:0}.now .art{width:48px;height:48px;flex:none;border-radius:8px;font-size:21px}.now-meta{min-width:0}.now-meta b,.now-meta span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.now-meta span{font-size:12px;color:var(--muted)}.player-center{display:grid;gap:7px;justify-items:center}.controls{display:flex;align-items:center;gap:20px}.controls button{border:0;background:none;color:var(--muted);font-size:17px}.controls .play{background:var(--text);color:#111;width:35px;height:35px;border-radius:50%;font-size:15px}.progress{display:flex;align-items:center;gap:9px;width:100%;font-size:10px;color:var(--muted)}input[type=range]{accent-color:var(--lime);width:100%;cursor:pointer}.right-controls{display:flex;justify-content:flex-end;align-items:center;gap:14px;color:var(--muted)}.right-controls button{background:none;border:0;color:inherit;font-size:17px}
+    .mobile-nav{display:none}.toast{position:fixed;bottom:105px;left:50%;transform:translateX(-50%);background:#292932;padding:10px 16px;border-radius:99px;font-size:13px;z-index:9;box-shadow:0 8px 30px #0008}
+    @media(max-width:850px){.app{padding:16px 16px 150px}.layout{display:block}.side{display:none}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{min-height:205px;padding:23px}.player{grid-template-columns:1fr auto;gap:8px;padding:9px 13px calc(9px + env(safe-area-inset-bottom))}.player-center{grid-column:1/-1;grid-row:2;display:flex;flex-direction:row-reverse;justify-content:space-between}.controls{gap:15px}.progress{max-width:55%}.right-controls{display:none}.now .art{width:42px;height:42px}.mobile-nav{display:flex;position:fixed;z-index:4;bottom:80px;left:0;right:0;justify-content:space-around;background:#101015ed;padding:8px 4px;border-top:1px solid var(--line)}.mobile-nav button{background:none;border:0;color:var(--muted);font-size:11px;display:grid;gap:3px;justify-items:center}.mobile-nav button.active{color:var(--lime)}.mobile-nav span{font-size:18px}.track{grid-template-columns:38px minmax(0,1fr) 34px;gap:9px}.duration{display:none}}
+    @media(min-width:851px){.mobile-nav{display:none}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header><div class="brand"><div class="logo">♫</div>AURALIS</div><div class="top-right"><button class="pill" id="installBtn" hidden>Install app</button><span class="pill active">● Online</span></div></header>
+  <div class="layout">
+    <aside class="side">
+      <nav class="nav" id="sideNav">
+        <button class="active" data-page="home"><span class="ico">⌂</span>Home</button>
+        <button data-page="search"><span class="ico">⌕</span>Search</button>
+        <button data-page="library"><span class="ico">▤</span>Your Library</button>
+      </nav>
+      <div class="side-label">YOUR COLLECTION</div>
+      <nav class="nav"><button data-page="liked"><span class="ico">♡</span>Liked Songs</button><button data-page="playlist"><span class="ico">＋</span>My Playlist</button></nav>
+      <div class="side-note">Auralis streams demo tracks over the internet. A licensed catalog can be connected in a future version.</div>
+    </aside>
+    <main id="main"></main>
+  </div>
+</div>
+<nav class="mobile-nav" id="mobileNav"><button class="active" data-page="home"><span>⌂</span>Home</button><button data-page="search"><span>⌕</span>Search</button><button data-page="library"><span>▤</span>Library</button><button data-page="liked"><span>♡</span>Liked</button></nav>
+<div class="player">
+  <div class="now"><div class="art a1" id="playerArt"><b>♫</b></div><div class="now-meta"><b id="playerTitle">Choose a track</b><span id="playerArtist">Auralis</span></div><button class="heart" id="playerLike" aria-label="Like song">♡</button></div>
+  <div class="player-center"><div class="controls"><button id="shuffleBtn" title="Shuffle">⤨</button><button id="prevBtn" title="Previous">◀|</button><button class="play" id="playBtn" title="Play">▶</button><button id="nextBtn" title="Next">|▶</button><button id="repeatBtn" title="Repeat">↻</button></div><div class="progress"><span id="elapsed">0:00</span><input id="seek" type="range" min="0" max="100" value="0"><span id="total">0:00</span></div></div>
+  <div class="right-controls"><span>♫</span><button id="queueBtn" title="Queue">☷</button><span>🔊</span><input id="volume" type="range" min="0" max="1" step=".01" value=".8" style="width:90px"></div>
+</div>
+<audio id="audio" preload="none"></audio>
+<script src="app.js"></script>
+</body></html>
